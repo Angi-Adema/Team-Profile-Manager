@@ -6,74 +6,118 @@ const generateHTML = require('./src/generateHTML');
 //Import taff cards.
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 
-//Array of questions for user input.
-function runPromptsEmployee() {
-    const questions = [{
-        type: 'input',
-        message: "What is the employee's name?",
-        name: 'name'
-        validate: nameInput => {
-            if (nameInput) {
-                return true;
-            } else {
-                console.log("Please enter the employee's name.");
-                return false;
-            }
+function managerQuestions() {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "id",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "email",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "officeNumber",
+            type: "input",
+            message: ""
+        },
+    ]).then((answers) => {
+
+    }).then(() => menu())
+}
+
+function engineerQuestions() {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "id",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "email",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "github",
+            type: "input",
+            message: ""
+        },
+    ]).then((answers) => {
+
+    }).then(() => menu())
+}
+
+function internQuestions() {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "id",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "email",
+            type: "input",
+            message: ""
+        },
+        {
+            name: "school",
+            type: "input",
+            message: ""
+        },
+    ]).then((answers) => {
+
+    }).then(() => menu())
+}
+
+function menu() {
+    inquirer.prompt([
+        {
+            name: "menu",
+            type: "list",
+            message: "what would you like to do?",
+            choices: ['add a new Engineer', 'add a new Intern', 'Build HTML']
+        },
+
+    ]).then((answers) => {
+        switch (answers.menu) {
+            case 'add a new Engineer':
+                engineerQuestions()
+                break;
+            case 'add a new Intern':
+                internQuestions()
+                break;
+            default:
+                buildHtml()
         }
-    },
-    {
-        type: 'input',
-        message: 'What is your ID?',
-        name: 'id'
-    },
-    {
-        type: 'input',
-        message: 'What is your email address?',
-        name: 'email'
-    },
-    {
-        type: 'list',
-        message: 'Please select your title:',
-        choices: ['Manager', 'Engineer', 'Employee', 'Intern'],
-        name: 'title'
-    }];
-
-    return inquirer
-        .prompt(questions);
+    })
 }
 
-function runPromptsManager() {
-    const questions = [{
-        type: 'input',
-        message: 'What is your office number?',
-        name: 'officeNumber'
-    }];
-
-    return inquirer
-        .prompt(questions);
+function buildHtml() {
+    fs.writeFileSync('./dist/index.html', generateHTML())
 }
 
-function runPromptsEngineer() {
-    const questions = [{
-        type: 'input',
-        message: 'What is your GitHub profile address?',
-        name: 'github'
-    }];
-
-    return inquirer 
-        .prompt(questions);
+function start() {
+    managerQuestions()
 }
 
-function runPromptsIntern() {
-    const questions = [{
-        type: 'input',
-        message: 'What is the name of your school?',
-        name: 'school'
-    }];
-
-    return inquirer
-        .prompt(questions);
-}
+start()
