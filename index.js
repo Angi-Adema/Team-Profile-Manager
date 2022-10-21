@@ -4,17 +4,25 @@ const fs = require('fs');
 const generateHTML = require('./src/generateHTML');
 
 //Import taff cards.
-const Manager = require('./lib/manager');
-const Engineer = require('./lib/engineer');
-const Employee = require('./lib/employee');
-const Intern = require('./lib/intern');
+const Manager = require('./lib/Managers');
+const Engineer = require('./lib/Engineers');
+const Employee = require('./lib/Employees');
+const Intern = require('./lib/Interns');
 
 //Array of questions for user input.
 function runPromptsEmployee() {
     const questions = [{
         type: 'input',
-        message: 'What is your name?',
+        message: "What is the employee's name?",
         name: 'name'
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log("Please enter the employee's name.");
+                return false;
+            }
+        }
     },
     {
         type: 'input',
