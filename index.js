@@ -4,10 +4,10 @@ const fs = require('fs');
 const generateHTML = require('./src/generateHTML');
 
 //Import taff cards.
-const Manager = require('./lib/Managers');
-const Engineer = require('./lib/Engineers');
-const Employee = require('./lib/Employees');
-const Intern = require('./lib/Interns');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Employee = require('./lib/Employee');
+const Intern = require('./lib/Intern');
 
 //Array of questions for user input.
 function runPromptsEmployee() {
