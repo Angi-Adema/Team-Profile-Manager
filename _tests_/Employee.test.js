@@ -3,7 +3,7 @@ const Employee = require('../lib/Employee');
 
 describe('employee', () => {
     describe('generate employee object', () => {
-        it('should generate an employee object for data input', () => {
+        it('should generate an employee object from data input', () => {
             const employee = new Employee('Shmo', 20, 'shmo2@yahoo.com');
 
             expect(employee.name).toEqual(expect.any(String));
