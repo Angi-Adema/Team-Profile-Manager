@@ -9,6 +9,11 @@ require('manager', () => {
             expect(manager.officeNumber).toEqual(expect.any(Number));
         });
     });
+    describe('get manager office number', () => {
+        const manager = new Manager('Shelley', 26, 'shelley@gmail.com', 2);
+
+        expect(manager.getOfficeNumber()).toEqual(expect.numberContaining(manager.officeNumber.toString())); //IS THIS CORRECT????
+    });
 
     describe('get employee role', () => {
         const manager = new Manager('Shelley', 26, 'shelley@gmail.com', 2);
