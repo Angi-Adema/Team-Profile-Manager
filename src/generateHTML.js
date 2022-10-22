@@ -1,4 +1,39 @@
+//Push the array created to the generateHTML file.
+generateHTML = (data) => {
 
+    //Empty array for the staff profiles.
+    cardArray = [];
+
+    //Loop through the data to generate employee data and role.
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+    };
+    //Import manager info if entered.
+    if (role === 'Manager') {
+        const managerCard = generateManager(employee);
+
+        cardArray.push(managerCard);
+    };
+    //Import engineer info if entered.
+    if (role === 'Engineer') {
+        const engineerCard = generateEngineer(employee);
+
+        cardArray.push(engineerCard);
+    };
+    //Import intern info if entered.
+    if (role === 'Intern') {
+        const internCard = generateIntern(employee);
+
+        cardArray.push(internCard);
+    };
+    //Need to join the string data from input above.
+const staffCards = cardArray.join('');
+
+//Generate the profile page.
+const generateStaff = generateStaffPage(employeeCards);
+return generateStaff;
+};
 
 
 module.exports = ()=> {
@@ -101,4 +136,5 @@ module.exports = ()=> {
 
 </html>
     `
-}
+};
+
