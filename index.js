@@ -30,17 +30,17 @@ function managerQuestions() {
         {
             name: "officeNumber",
             type: "input",
-            message: "What is the manager's office number?"
+            message: "What is the manager's office phone number?"
         },
     ]).then((answers) => {
         const { name, id, email, officeNumber } = answers;
-        const manager = new Manager (name, id, email, officeNumber);
+        const manager = new Manager(name, id, email, officeNumber);
 
         staffArray.push(manager);
-       
 
-    }).then(() => menu())
-}
+
+    }).then(() => menu());
+};
 
 function engineerQuestions() {
     inquirer.prompt([
@@ -66,13 +66,13 @@ function engineerQuestions() {
         },
     ]).then((answers) => {
         const { name, id, email, github } = answers;
-        const engineer = new Engineer (name, id, email, github);
+        const engineer = new Engineer(name, id, email, github);
 
         staffArray.push(engineer);
-        
 
-    }).then(() => menu())
-}
+
+    }).then(() => menu());
+};
 
 function internQuestions() {
     inquirer.prompt([
@@ -98,13 +98,13 @@ function internQuestions() {
         },
     ]).then((answers) => {
         const { name, id, email, school } = answers;
-        const intern = new Intern (name, id, email, school);
+        const intern = new Intern(name, id, email, school);
 
         staffArray.push(intern);
-      
 
-    }).then(() => menu())
-}
+
+    }).then(() => menu());
+};
 
 function menu() {
     inquirer.prompt([
@@ -118,16 +118,16 @@ function menu() {
     ]).then((answers) => {
         switch (answers.menu) {
             case 'add a new Engineer':
-                engineerQuestions()
+                engineerQuestions();
                 break;
             case 'add a new Intern':
-                internQuestions()
+                internQuestions();
                 break;
             default:
-                buildHtml()
+                buildHtml();
         }
-    })
-}
+    });
+};
 
 
 
@@ -137,14 +137,14 @@ function buildHtml() {
             console.log(err);
             return;
         } else {
-            console.log("Staff profile successfully created!")
+            console.log("Staff profile successfully created!");
         }
-    })
-}
+    });
+};
 
 function start() {
-    managerQuestions()
-       
-}
+    managerQuestions();
 
-start()
+};
+
+start();
