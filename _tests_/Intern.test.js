@@ -6,14 +6,14 @@ describe('intern', () => {
         it('should generate an intern object from data input', () => {
             const intern = new Intern('Dan', 24, 'dan@gmail.com', 'DU');
 
-            expect(intern.school).toEqual(expect.any(String));
+            expect(intern.school).toEqual("DU");
         });
     });
 
     describe('get name of school', () => {
         const intern = new Intern('Dan', 24, 'dan@gmail.com', 'DU');
 
-        expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school.toString()));
+        expect(intern.getSchool()).toEqual(expect.stringContaining("DU"));
     });
 
     describe('get employee role', () => {

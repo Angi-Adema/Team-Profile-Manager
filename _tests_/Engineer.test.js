@@ -6,14 +6,14 @@ describe('engineer', () => {
         it('should generate an engineer object from data input', () => {
             const engineer = new Engineer('Angi', 22, 'angi.adema@gmail.com', 'Angi-Adema');
 
-            expect(engineer.github).toEqual(expect.any(String));
+            expect(engineer.github).toEqual('Angi-Adema');
         })
     })
 
     describe('get engineer github username', () => {
         const engineer = new Engineer('Angi', 22, 'angi.adema@gmail.com', 'Angi-Adema');
 
-        expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github.toString()));
+        expect(engineer.getGithub()).toEqual('Angi-Adema');
     })
 
     describe('get employee role', () => {

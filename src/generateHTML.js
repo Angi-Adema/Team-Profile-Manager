@@ -1,42 +1,70 @@
 //Push the array created to the generateHTML file.
-generateHTML = (data) => {
+function mainHTML(team) {
 
-    //Empty array for the staff profiles.
-    cardArray = [];
+    function generateManager(manager) {
+        return `<div class="col-4 mt-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning">
+                <h3>${manager.getName()}</h3>
+                <h4>Manager</h4><i class="fa-solid fa-mug-hot"></i>
+            </div>
 
-    //Loop through the data to generate employee data and role.
-    for (let i = 0; i < data.length; i++) {
-        const employee = data[i];
-        const role = employee.getRole();
-    };
-    //Import manager info if entered.
-    if (role === 'Manager') {
-        const managerCard = generateManager(employee);
+            <div class="card-body">
+                <p class="id">ID:  ${manager.getID()}</p>
+                <p class="email">Email: <a href="mailto:${manager.getEmail()}"> ${manager.getEmail()}</a></p>
+                <p class="office">Office Number: ${manager.getOfficeNumber()}</p>
+            </div>
+        </div>
+    </div>`
+    }
 
-        cardArray.push(managerCard);
-    };
-    //Import engineer info if entered.
-    if (role === 'Engineer') {
-        const engineerCard = generateEngineer(employee);
+    function generateEngineer(engineer) {
+        return `<div class="col-4 mt-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning">
+                <h3>${engineer.getName()}</h3>
+                <h4>Engineer</h4><i class="fa-solid fa-glasses"></i>
+            </div>
 
-        cardArray.push(engineerCard);
-    };
-    //Import intern info if entered.
-    if (role === 'Intern') {
-        const internCard = generateIntern(employee);
+            <div class="card-body">
+                <p class="id">ID:  ${engineer.getID()}</p>
+                <p class="email">Email: <a href="mailto:${engineer.getEmail()}"> ${engineer.getEmail()}</a></p>
+                <p class="github">GitHub Username: <a href="https://github.com/${engineer.getGithub()}">https://github.com/${engineer.getGithub()}</a>
+                </p>
+            </div>
+        </div>
+    </div>`
+    }
 
-        cardArray.push(internCard);
-    };
-    //Need to join the string data from input above.
-const staffCards = cardArray.join('');
+    function generateIntern(intern) {
+        return `<div class="col-4 mt-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning">
+                <h3>${intern.getName()}</h3>
+                <h4>Intern</h4><i class="fa-solid fa-user-graduate"></i>
+            </div>
 
-//Generate the profile page.
-const generateStaff = generateStaffPage(employeeCards);
-return generateStaff;
+            <div class="card-body">
+                <p class="id">ID:  ${intern.getID()}</p>
+                <p class="email">Email: <a href="mailto:${intern.getEmail()}"> ${intern.getEmail()}</a></p>
+                <p class="school">School: ${intern.getSchool()}</p>
+            </div>
+        </div>
+    </div>`
+    }
+
+
+    const cardArray = [];
+
+    cardArray.push(team.filter((member) => member.getRole() === 'Manager').map((manager) => generateManager(manager)));
+    cardArray.push(team.filter((member) => member.getRole() === 'Engineer').map((engineer) => generateEngineer(engineer)).join(''));
+    cardArray.push(team.filter((member) => member.getRole() === 'Intern').map((intern) => generateIntern(intern)).join(''));
+
+    return cardArray.join('');
 };
 
 
-module.exports = ()=> {
+module.exports = (team) => {
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -61,68 +89,8 @@ module.exports = ()=> {
         <div class="container-fluid">
             <div class="row justify-content-center">
 
-                <div class="col-4 mt-4">
-                    <div class="card h-100">
-                        <div class="card-header bg-warning">
-                            <h3>Jared</h3>
-                            <h4>Manager</h4><i class="fa-solid fa-mug-hot"></i>
-                        </div>
+            ${mainHTML(team)}
 
-                        <div class="card-body">
-                            <p class="id">ID: 1234</p>
-                            <p class="email">Email: <a href="mailto:jared.manager@yahoo.com"></a></p>
-                            <p class="office">Office Number: 1</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4 mt-4">
-                    <div class="card h-100">
-                        <div class="card-header bg-warning">
-                            <h3>Angi</h3>
-                            <h4>Engineer</h4><i class="fa-solid fa-glasses"></i>
-                        </div>
-
-                        <div class="card-body">
-                            <p class="id">ID: 1234</p>
-                            <p class="email">Email: <a href="mailto:angi.engineer@yahoo.com"></a></p>
-                            <p class="github">GitHub Username: <a href="https://github.com/Angi-Adema">Angi-Adema</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4 mt-4">
-                    <div class="card h-100">
-                        <div class="card-header bg-warning">
-                            <h3>Grace</h3>
-                            <h4>Employee</h4><i class="fa-solid fa-vest"></i>
-                        </div>
-
-                        <div class="card-body">
-                            <p class="id">ID: 1234</p>
-                            <p class="email">Email: <a href="mailto:grace.employee@yahoo.com"></a></p>
-                            <p class="office">Office Number: 3</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4 mt-4">
-                    <div class="card h-100">
-                        <div class="card-header bg-warning">
-                            <h3>John</h3>
-                            <h4>Intern</h4><i class="fa-solid fa-user-graduate"></i>
-                        </div>
-
-                        <div class="card-body">
-                            <p class="id">ID: 1234</p>
-                            <p class="email">Email: <a href="mailto:john.intern@yahoo.com"></a></p>
-                            <p class="school">School: University of Denver</p>
-                        </div>
-                    </div>
-                </div>
-
-                
             </div>
         </div>
     </main>

@@ -37,7 +37,7 @@ function managerQuestions() {
         const manager = new Manager (name, id, email, officeNumber);
 
         staffArray.push(manager);
-        console.log(manager);
+       
 
     }).then(() => menu())
 }
@@ -69,7 +69,7 @@ function engineerQuestions() {
         const engineer = new Engineer (name, id, email, github);
 
         staffArray.push(engineer);
-        console.log(engineer);
+        
 
     }).then(() => menu())
 }
@@ -101,7 +101,7 @@ function internQuestions() {
         const intern = new Intern (name, id, email, school);
 
         staffArray.push(intern);
-        console.log(intern);
+      
 
     }).then(() => menu())
 }
@@ -129,37 +129,10 @@ function menu() {
     })
 }
 
-//Saw this and am trying to repurpose it here.
-// .then(employeeData => {
-//     let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
-//     let employee;
-
-//     if (role === 'Engineer') {
-//         employee = new Engineer (name, id, email, github);
-
-//         console.log(employee);
-
-//     } else if (role === 'Intern') {
-//         employee = new Intern (name, id, email, school);
-
-//         console.log(employee);
-//     }
-//     staffArray.push(employee);
-
-//     if(confirmAddEmployee) {
-//         return confirmAddEmployee(teamArray);
-//     } else {
-//         return staffArray;
-//     }
-// })
-
-const addEmployee = () => {
-    console.log("Adding employees to the team");
-}
 
 
 function buildHtml() {
-    fs.writeFileSync('./dist/index.html', generateHTML(), err => {
+    fs.writeFileSync('./dist/index.html', generateHTML(staffArray), err => {
         if (err) {
             console.log(err);
             return;
@@ -171,16 +144,7 @@ function buildHtml() {
 
 function start() {
     managerQuestions()
-        .then(addEmployee)
-        .then(staffArray => {
-            return generateHTML(staffArray);
-        })
-        .then(pageHTML => {
-            return writeFile(pageHTML);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+       
 }
 
 start()

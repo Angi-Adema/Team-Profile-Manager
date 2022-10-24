@@ -6,28 +6,28 @@ describe('employee', () => {
         it('should generate an employee object from data input', () => {
             const employee = new Employee('Shmo', 20, 'shmo2@yahoo.com');
 
-            expect(employee.name).toEqual(expect.any(String));
-            expect(employee.id).toEqual(expect.any(Number));
-            expect(employee.email).toEqual(expect.any(String));
+            expect(employee.name).toEqual('Shmo');
+            expect(employee.id).toEqual(20);
+            expect(employee.email).toEqual('shmo2@yahoo.com');
         });
     });
 
     describe('get employee name', () => {
         const employee = new Employee('Shmo', 20, 'shmo2@yahoo.com');
 
-        expect(employee.getName()).toEqual(expect.any(String));
+        expect(employee.getName()).toEqual('Shmo');
     });
 
     describe('get employee id', () => {
         const employee = new Employee('Shmo', 20, 'shmo2@yahoo.com');
 
-        expect(employee.getID()).toEqual(expect.any(Number));
+        expect(employee.getID()).toEqual(20);
     });
 
     describe('get employee email', () => {
         const employee = new Employee('Shmo', 20, 'shmo2@yahoo.com');
 
-        expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
+        expect(employee.getEmail()).toEqual('shmo2@yahoo.com');
     });
 
     describe('get employee role', () => {
