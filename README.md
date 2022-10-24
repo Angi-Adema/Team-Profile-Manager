@@ -1,5 +1,15 @@
 # Team-Profile-Manager
 
+## Description
+
+This app was created to allow the office manager of a software development team to be able to go in and generate employee profiles upon entering basic information on each employee. This way the manager can access email addresses, GitHub usernames and basic employee information all in one place. The office manager can then access the employee data easily to carry out day to day tasks.
+
+![Team-Profile-Manager Demo Video](https://drive.google.com/file/d/1vdNj-bWNRr7W-o3zOwHID99UnpEsB6F6/view)
+
+[GitHub Link](https://github.com/Angi-Adema/Team-Profile-Manager)
+
+##Acceptance Criteria
+
 GIVEN a command-line application that accepts user input
 WHEN I am prompted for my team members and their information
 THEN an HTML file is generated that displays a nicely formatted team roster based on user input
