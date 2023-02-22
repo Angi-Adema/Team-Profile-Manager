@@ -35,3 +35,11 @@ THEN I exit the application, and the HTML is generated
 Node.js / Express.js
 Jest
 Inquirer
+
+## Deploy Locally
+
+1. npm i
+2. npm run test (confirm all tests written pass)
+3. node index.js (run manager prompt - enter team manager info below)
+  -Team Manager: Jenn Smith, ID: 785, Email: jenn@gmail.com, Office Phone: 555-555-5555
+
